@@ -1,5 +1,5 @@
-let select = document.querySelector('.currency');
-let selectEnd = document.querySelector('.end');
+let fromCurrency = document.querySelector('.fromCurrency');
+let toCurrency = document.querySelector('.toCurrency');
 let customInput = document.querySelector('.customInput');
 let btn = document.querySelector('button');
 let showResult = document.querySelector('.result');
@@ -10,33 +10,33 @@ request.open('GET', requestURL);
 request.responseType = 'json';
 request.send();
 
-let html;
-
 request.onload = function() {
   var response = request.response;
+  console.log(response);
 
   const propertyKeys = Object.keys(response.rates);
   const propertyValues = Object.values(response.rates);
   for (let i = 0; i < propertyValues.length; i++) {
-    let opt = document.createElement('option');
+    const opt = document.createElement('option');
     opt.value = propertyValues[i];
     opt.innerHTML = propertyKeys[i];
-    selectEnd.appendChild(opt);
+    toCurrency.appendChild(opt);
   }
   for (let i = 0; i < propertyValues.length; i++) {
-    let opt = document.createElement('option');
+    const opt = document.createElement('option');
     opt.value = propertyValues[i];
     opt.innerHTML = propertyKeys[i];
-    select.appendChild(opt);
+    fromCurrency.appendChild(opt);
   }
 }
 
-function convert(requestURL) {
-  let result = Number((selectEnd.value / select.value));
-  let finalResult = (result * customInput.value);
-  showResult.innerHTML = finalResult.toFixed(2);
+function convert() {
+  const result = Number((toCurrency.value / fromCurrency.value));
+  const finalResult = (result * customInput.value);
+  const text = toCurrency.options[toCurrency.selectedIndex].text;
+  // console.log(text);
+  showResult.innerHTML = finalResult.toFixed(2) + ' ' +text;
 }
-
 
 
 btn.addEventListener('click', convert);
