@@ -6,31 +6,27 @@
     <meta description="Currency Converter using a API">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currency Converter</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
-
-<style>
-    .currency  {
-        width: 150px;
-    }
-
-    .end {
-        width: 150px;
-    }
-    
-    .result {
-        color: black;
-    }
-</style>
 <body>
-    
-    
-    <select class="currency"></select>
-    <select class="end"></select>
-    <input class="customInput" type="number" value="1">
 
-    <span class="result"></span>
-    <button>Convert</button>
 
-    <script src="script.js"></script>
+    <div class="container">
+        <div class="title">
+        <h1>Currency Converter</h1>
+        </div>
+            <div>
+            <label>From:</label>
+            <select class="fromCurrency"></select>
+            <label>To:</label>
+            <select class="toCurrency"></select>
+            <input class="customInput" type="number" value="1">
+            <label>You get:</label>
+            <span class="result"></span>
+            <button class="btn">Convert</button>
+        </div>
+    </div>
+
+    <script src="script/script.js"></script>
 </body>
 </html>
